@@ -7687,6 +7687,9 @@ body.md-skin {
   .navbar-top-links .dropdown-alerts {
     margin-left: auto;
   }
+  .navbar-form-custom {
+    display: none;
+  }
 }
 @media (max-width: 768px) {
   #page-wrapper {

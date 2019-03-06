@@ -25,9 +25,10 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "node_modules/font-awesome/scss/font-awesome.scss",
+              "src/assets/styles/pace.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": ["src/scripts/pace.js"]
           },
           "configurations": {
             "production": {

@@ -9,9 +9,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactDetailsComponent } from './contacts/contact-details/contact-details.component';
 import { ContactListComponent } from './contacts/contact-list/contact-list.component';
+import { SupervisorsComponent } from './supervisors/supervisors.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [AppComponent, ContactDetailsComponent, ContactListComponent],
+  declarations: [AppComponent, ContactDetailsComponent, ContactListComponent, SupervisorsComponent, DashboardComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
