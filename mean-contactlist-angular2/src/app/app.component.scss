@@ -7772,12 +7772,22 @@ body.md-skin {
 }
 
 
+/*Custom Classes*/
+
 .not-pinned{
     animation: 0.6s linear slidein forwards;
 }
 
 .body-small .pinned{
     animation: 0.6s linear slidein forwards;
+}
+
+.mat-table {
+   width: 100%;
+}
+
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+    text-align: left;
 }
 
 @keyframes slidein {
