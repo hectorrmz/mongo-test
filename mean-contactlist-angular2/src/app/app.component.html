@@ -1,23 +1,16 @@
-<div id="wrapper">
-  <nav class="navbar-default navbar-static-side" role="navigation">
+<div
+  id="wrapper"
+  [ngClass]="{ 'mini-navbar': miniMenu, 'body-small': bodySmall }"
+  (window:resize)="onResize($event)"
+>
+  <nav
+    class="navbar-default navbar-static-side"
+    role="navigation"
+    [ngClass]="miniMenu ? 'pinned' : 'not-pinned'"
+  >
     <div class="sidebar-collapse">
       <ul class="nav metismenu" id="side-menu">
         <li class="nav-header">
-          <div class="dropdown profile-element">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-              <span class="clear">
-                <span class="block m-t-xs">
-                  <strong class="font-bold">David Williams</strong>
-                </span>
-                <span class="text-muted text-xs block"
-                  >Art Director <b class="caret"></b
-                ></span>
-              </span>
-            </a>
-            <ul class="dropdown-menu animated fadeInRight m-t-xs">
-              <li><a href="#">Logout</a></li>
-            </ul>
-          </div>
           <div class="logo-element">
             IN+
           </div>
@@ -43,10 +36,13 @@
       <nav
         class="navbar navbar-static-top white-bg"
         role="navigation"
-        style="margin-bottom: 0"
+        style="margin-bottom: 0; padding: 0; width: 100%"
       >
         <div class="navbar-header">
-          <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"
+          <a
+            class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+            (click)="miniMenu = !miniMenu"
+            href="#"
             ><i class="fa fa-bars"></i>
           </a>
           <form role="search" class="navbar-form-custom" method="post" action="#">
