@@ -2,11 +2,13 @@
   <div class="col-md-5">
     <h2>Contacts</h2>
     <ul class="list-group">
-      <li class="list-group-item"
+      <li
+        class="list-group-item"
         *ngFor="let contact of contacts"
         (click)="selectContact(contact)"
-        [class.active]="contact === selectedContact">
-        {{contact.name}}
+        [class.active]="contact === selectedContact"
+      >
+        {{ contact.name }}
       </li>
     </ul>
     <button class="btn btn-warning" (click)="createNewContact()">New</button>
@@ -16,7 +18,41 @@
       [contact]="selectedContact"
       [createHandler]="addContact"
       [updateHandler]="updateContact"
-      [deleteHandler]="deleteContact">
+      [deleteHandler]="deleteContact"
+    >
     </contact-details>
   </div>
+</div>
+<div class="row">
+  <table mat-table [dataSource]="contacts" class="mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+
+    <!-- Mobile Column -->
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef>Phone</th>
+      <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+    </ng-container>
+
+    <!-- Work Column -->
+    <ng-container matColumnDef="phone2">
+      <th mat-header-cell *matHeaderCellDef>Phone 2</th>
+      <td mat-cell *matCellDef="let element">{{ element.phone2 }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
 </div>

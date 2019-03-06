@@ -7,40 +7,38 @@ import { ContactDetailsComponent } from '../contact-details/contact-details.comp
   selector: 'contact-list',
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.scss'],
-  providers: [ContactService]
+  providers: [ContactService],
 })
-
 export class ContactListComponent implements OnInit {
+  contacts: Contact[];
 
-  contacts: Contact[]
-  selectedContact: Contact
+  displayedColumns: string[] = ['name', 'email', 'phone', 'phone2'];
+  selectedContact: Contact;
 
-  constructor(private contactService: ContactService) { }
+  constructor(private contactService: ContactService) {}
 
   ngOnInit() {
-     this.contactService
-      .getContacts()
-      .then((contacts: Contact[]) => {
-        this.contacts = contacts.map((contact) => {
-          if (!contact.phone) {
-            contact.phone = {
-              mobile: '',
-              work: ''
-            }
-          }
-          return contact;
-        });
+    this.contactService.getContacts().then((contacts: Contact[]) => {
+      this.contacts = contacts.map(contact => {
+        if (!contact.phone) {
+          contact.phone = {
+            mobile: '',
+            work: '',
+          };
+        }
+        return contact;
       });
-  }
-
-  private getIndexOfContact = (contactId: String) => {
-    return this.contacts.findIndex((contact) => {
-      return contact._id === contactId;
     });
   }
 
+  private getIndexOfContact = (contactId: String) => {
+    return this.contacts.findIndex(contact => {
+      return contact._id === contactId;
+    });
+  };
+
   selectContact(contact: Contact) {
-    this.selectedContact = contact
+    this.selectedContact = contact;
   }
 
   createNewContact() {
@@ -49,8 +47,8 @@ export class ContactListComponent implements OnInit {
       email: '',
       phone: {
         work: '',
-        mobile: ''
-      }
+        mobile: '',
+      },
     };
 
     // By default, a newly-created contact will have the selected state.
@@ -64,13 +62,13 @@ export class ContactListComponent implements OnInit {
       this.selectContact(null);
     }
     return this.contacts;
-  }
+  };
 
   addContact = (contact: Contact) => {
     this.contacts.push(contact);
     this.selectContact(contact);
     return this.contacts;
-  }
+  };
 
   updateContact = (contact: Contact) => {
     var idx = this.getIndexOfContact(contact._id);
@@ -79,5 +77,5 @@ export class ContactListComponent implements OnInit {
       this.selectContact(contact);
     }
     return this.contacts;
-  }
+  };
 }
