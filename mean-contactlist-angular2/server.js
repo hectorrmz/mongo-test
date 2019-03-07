@@ -4,6 +4,7 @@ var mongodb = require('mongodb');
 var ObjectID = mongodb.ObjectID;
 
 var CONTACTS_COLLECTION = 'contacts';
+const SUPERVISORS_COLLECTION = 'supervisors';
 
 var app = express();
 app.use(bodyParser.json());
@@ -130,6 +131,24 @@ app.delete('/api/contacts/:id', function(req, res) {
       }
     }
   );
+});
+
+
+/*  "/api/supervisors"
+ *    GET: finds all supervisors
+ *    POST: creates a new supervisor
+ */
+
+app.get('/api/supervisors', function(req, res) {
+  db.collection(SUPERVISORS_COLLECTION)
+    .find({})
+    .toArray(function(err, supervisors) {
+      if (err) {
+        handleError(res, err.message, 'Failed to get supervisors.');
+      } else {
+        res.status(200).json(supervisors);
+      }
+    });
 });
 
 app.get('*', function(req, res) {
