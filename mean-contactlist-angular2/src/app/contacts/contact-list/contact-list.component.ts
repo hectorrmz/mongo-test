@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Contact } from '../contact';
 import { ContactService } from '../contact.service';
 import { ContactDetailsComponent } from '../contact-details/contact-details.component';
+import { ModalComponent } from 'src/app/modal/modal.component';
 
 @Component({
   selector: 'contact-list',
@@ -10,6 +11,7 @@ import { ContactDetailsComponent } from '../contact-details/contact-details.comp
   providers: [ContactService]
 })
 export class ContactListComponent implements OnInit {
+  @ViewChild('contactModal') contactModal: ModalComponent;
   contacts: Contact[];
 
   displayedColumns: string[] = ['name', 'email', 'mobile', 'work'];
@@ -18,6 +20,16 @@ export class ContactListComponent implements OnInit {
   constructor(private contactService: ContactService) {}
 
   ngOnInit() {
+    var contact: Contact = {
+      name: '',
+      email: '',
+      phone: {
+        work: '',
+        mobile: ''
+      }
+    };
+    this.selectedContact = contact;
+
     this.contactService.getContacts().then((contacts: Contact[]) => {
       this.contacts = contacts.map(contact => {
         if (!contact.phone) {
@@ -70,6 +82,8 @@ export class ContactListComponent implements OnInit {
   addContact = (contact: Contact) => {
     this.contacts.push(contact);
     this.selectContact(contact);
+    this.contactModal.isOpen = false;
+    this.ngOnInit();
     return this.contacts;
   };
 
