@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="email" onclick="this.classList.add('expand')">
+    <div class="from">
+      <div class="from-contents">
+        <div class="avatar me"></div>
+        <div class="name">Add new service</div>
+      </div>
+    </div>
+    <div class="to">
+      <div class="to-contents">
+        <div class="top">
+          <div class="avatar-large me"></div>
+          <div class="name-large">Add new Service</div>
+          <div
+            class="x-touch"
+            onclick="document.querySelector('.email').classList.remove('expand');event.stopPropagation();"
+          >
+            <div class="x">
+              <div class="line1"></div>
+              <div class="line2"></div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          Texto
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,9 +11,10 @@ import { ContactDetailsComponent } from './contacts/contact-details/contact-deta
 import { ContactListComponent } from './contacts/contact-list/contact-list.component';
 import { SupervisorsComponent } from './supervisors/supervisors.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
-  declarations: [AppComponent, ContactDetailsComponent, ContactListComponent, SupervisorsComponent, DashboardComponent],
+  declarations: [AppComponent, ContactDetailsComponent, ContactListComponent, SupervisorsComponent, DashboardComponent, ModalComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,

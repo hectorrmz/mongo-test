@@ -7,7 +7,7 @@ import { ContactDetailsComponent } from '../contact-details/contact-details.comp
   selector: 'contact-list',
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.scss'],
-  providers: [ContactService],
+  providers: [ContactService]
 })
 export class ContactListComponent implements OnInit {
   contacts: Contact[];
@@ -23,8 +23,11 @@ export class ContactListComponent implements OnInit {
         if (!contact.phone) {
           contact.phone = {
             mobile: '',
-            work: '',
+            work: ''
           };
+        } else {
+          contact.mobile = contact.phone.mobile;
+          contact.work = contact.phone.work;
         }
         return contact;
       });
@@ -47,8 +50,8 @@ export class ContactListComponent implements OnInit {
       email: '',
       phone: {
         work: '',
-        mobile: '',
-      },
+        mobile: ''
+      }
     };
 
     // By default, a newly-created contact will have the selected state.
