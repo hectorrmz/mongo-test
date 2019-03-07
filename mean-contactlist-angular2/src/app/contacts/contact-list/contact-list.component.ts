@@ -12,7 +12,7 @@ import { ContactDetailsComponent } from '../contact-details/contact-details.comp
 export class ContactListComponent implements OnInit {
   contacts: Contact[];
 
-  displayedColumns: string[] = ['name', 'email', 'phone', 'phone2'];
+  displayedColumns: string[] = ['name', 'email', 'mobile', 'work'];
   selectedContact: Contact;
 
   constructor(private contactService: ContactService) {}
