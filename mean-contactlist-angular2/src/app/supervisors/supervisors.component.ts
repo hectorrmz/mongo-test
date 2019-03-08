@@ -9,14 +9,14 @@ import { SupervisorService } from '../services/supervisors.service';
 })
 export class SupervisorsComponent implements OnInit {
   displayedColumns: string[] = ['name', 'phone', 'actions'];
-  dataSource = [];
+  supervisors: Supervisor[] = [];
 
   constructor(private supervisorService: SupervisorService) {}
 
   ngOnInit() {
     this.supervisorService.getSupervisors().subscribe(res => {
       console.log(res);
-      this.dataSource = res;
+      this.supervisors = res;
     });
   }
 

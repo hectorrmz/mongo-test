@@ -55,6 +55,10 @@ h5 {
   background-color: #293846;
   color: white;
 }
+.navbar-default .nav > li > a.active {
+  background-color: #3b5265;
+  color: white;
+}
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {

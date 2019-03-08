@@ -1,0 +1,40 @@
+<div>
+  <form class="row">
+    <div class="form-group col-md-12 ">
+      <label for="service-name">Nombre</label>
+      <input
+        class="form-control"
+        name="service-name"
+        [(ngModel)]="service.name"
+        placeholder="Nombre"
+      />
+    </div>
+    <div class="form-group col-md-12 ">
+      <label for="service-supervisor">Supervisor</label>
+      <select
+        class="form-control"
+        name="service-supervisor"
+        [(ngModel)]="service.supervisor"
+      ></select>
+    </div>
+    <div class="form-group col-md-12 ">
+      <label for="service-supervisor">Turno</label>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let schedule of schedules">
+          <mat-checkbox [(ngModel)]="schedule.value"
+            >{{ schedule.name }}
+          </mat-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-12 ">
+      <label for="service-supervisor">Salarios</label>
+    </div>
+
+    <div class="form-group col-md-12 text-right ">
+      <button class="btn btn-primary" (click)="createService()">
+        Create
+      </button>
+    </div>
+  </form>
+</div>

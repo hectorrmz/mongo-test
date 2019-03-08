@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,8 @@ import { ModalComponent } from './modal/modal.component';
 import { SupervisorFormComponent } from './supervisors/supervisor-form/supervisor-form.component';
 
 import { SupervisorService } from './services/supervisors.service';
+import { ServiceComponent } from './service/service.component';
+import { ServiceFormComponent } from './service/service-form/service-form.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,8 @@ import { SupervisorService } from './services/supervisors.service';
     DashboardComponent,
     ModalComponent,
     SupervisorFormComponent,
+    ServiceComponent,
+    ServiceFormComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -33,6 +38,7 @@ import { SupervisorService } from './services/supervisors.service';
     FormsModule,
     HttpModule,
     MatTableModule,
+    MatCheckboxModule,
   ],
   providers: [SupervisorService],
   bootstrap: [AppComponent],
