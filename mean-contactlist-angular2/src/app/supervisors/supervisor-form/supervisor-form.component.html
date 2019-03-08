@@ -1,0 +1,28 @@
+<div>
+  <form class="row">
+    <div class="form-group col-md-12 ">
+      <label for="supervisor-name">Name</label>
+      <input
+        class="form-control"
+        name="supervisor-name"
+        [(ngModel)]="supervisor.name"
+        placeholder="Nombre"
+      />
+    </div>
+    <div class="form-group col-md-12">
+      <label for="supervisor-phone">Telefono</label>
+      <input
+        class="form-control"
+        name="supervisor-phone"
+        [(ngModel)]="supervisor.phone"
+        placeholder="Telefono"
+      />
+    </div>
+
+    <div class="form-group col-md-12 text-right ">
+      <button class="btn btn-primary" (click)="createSupervisor()">
+        Create
+      </button>
+    </div>
+  </form>
+</div>

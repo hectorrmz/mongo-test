@@ -7803,6 +7803,10 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   color:white;
 }
 
+.form-control{
+  border-radius: 3px;
+}
+
 @keyframes slidein {
     0% {opacity: 0;}
     50% { opacity: 0 }

@@ -12,9 +12,20 @@ import { ContactListComponent } from './contacts/contact-list/contact-list.compo
 import { SupervisorsComponent } from './supervisors/supervisors.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ModalComponent } from './modal/modal.component';
+import { SupervisorFormComponent } from './supervisors/supervisor-form/supervisor-form.component';
+
+import { SupervisorService } from './services/supervisors.service';
 
 @NgModule({
-  declarations: [AppComponent, ContactDetailsComponent, ContactListComponent, SupervisorsComponent, DashboardComponent, ModalComponent],
+  declarations: [
+    AppComponent,
+    ContactDetailsComponent,
+    ContactListComponent,
+    SupervisorsComponent,
+    DashboardComponent,
+    ModalComponent,
+    SupervisorFormComponent,
+  ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
@@ -23,7 +34,7 @@ import { ModalComponent } from './modal/modal.component';
     HttpModule,
     MatTableModule,
   ],
-  providers: [],
+  providers: [SupervisorService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
