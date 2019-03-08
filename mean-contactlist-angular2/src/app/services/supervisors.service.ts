@@ -16,7 +16,7 @@ export class SupervisorService {
 
   createSupervisor(supervisor: Supervisor): Observable<any> {
     return this.http
-      .post('api/supervisor', supervisor)
+      .post('api/supervisors', supervisor)
       .pipe(map((response: Response) => response.json()));
   }
 }

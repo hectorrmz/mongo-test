@@ -8,7 +8,7 @@ function routes(Service) {
   const serviceRouter = express.Router();
 
   serviceRouter
-    .route('/service')
+    .route('/services')
     .get((req, res) => {
       Service.find((err, services) => {
         if (err) {
