@@ -1,26 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Supervisor } from '../models/supervisor';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
+import { Service } from '../models/service';
 
 @Injectable()
-export class SupervisorService {
+export class ServiceService {
   constructor(private http: Http) {}
 
-  getSupervisors(): Observable<Supervisor[]> {
+  getservices(): Observable<Service[]> {
     return this.http
-      .get('api/supervisors')
+      .get('api/services')
       .pipe(map((response: Response) => response.json()));
   }
 
-  createSupervisor(supervisor: Supervisor): Observable<any> {
+  createService(service: Service): Observable<any> {
     return this.http
-      .post('api/supervisors', supervisor)
+      .post('api/services', service)
       .pipe(map((response: Response) => response.json()));
-  }
-
-  deleteSupervisor(id: string): Observable<any> {
-    return this.http.delete('api/supervisors/' + id);
   }
 }

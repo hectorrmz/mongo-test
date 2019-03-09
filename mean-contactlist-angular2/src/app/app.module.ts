@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { SupervisorFormComponent } from './supervisors/supervisor-form/superviso
 import { SupervisorService } from './services/supervisors.service';
 import { ServiceComponent } from './service/service.component';
 import { ServiceFormComponent } from './service/service-form/service-form.component';
+import { ServiceService } from './services/services.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,7 @@ import { ServiceFormComponent } from './service/service-form/service-form.compon
     ModalComponent,
     SupervisorFormComponent,
     ServiceComponent,
-    ServiceFormComponent,
+    ServiceFormComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -39,8 +41,9 @@ import { ServiceFormComponent } from './service/service-form/service-form.compon
     HttpModule,
     MatTableModule,
     MatCheckboxModule,
+    MatTooltipModule
   ],
-  providers: [SupervisorService],
-  bootstrap: [AppComponent],
+  providers: [SupervisorService, ServiceService],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

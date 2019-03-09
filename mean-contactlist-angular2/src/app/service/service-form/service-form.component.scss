@@ -1,0 +1,15 @@
+.row.list {
+  align-items: center;
+  margin-bottom: 5px;
+
+  .turn-input {
+    display: inline-block;
+    width: 60%;
+  }
+
+  i.info {
+    margin: 10px;
+    color: #6392bd;
+    font-size: 15px;
+  }
+}

@@ -10,13 +10,15 @@ function routes(Service) {
   serviceRouter
     .route('/services')
     .get((req, res) => {
-      Service.find((err, services) => {
-        if (err) {
-          return res.send(err);
-        }
+      Service.find({})
+        .populate('supervisor')
+        .exec((err, services) => {
+          if (err) {
+            return res.send(err);
+          }
 
-        return res.send(services);
-      });
+          return res.send(services);
+        });
     })
     .post((req, res) => {
       const service = new Service(req.body);

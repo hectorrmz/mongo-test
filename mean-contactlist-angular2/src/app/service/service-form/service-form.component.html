@@ -15,20 +15,49 @@
         class="form-control"
         name="service-supervisor"
         [(ngModel)]="service.supervisor"
-      ></select>
+      >
+        <option disabled selected [ngValue]="null"
+          >Seleccionar Supervisor...</option
+        >
+        <option
+          *ngFor="let supervisor of supervisors"
+          [ngValue]="supervisor._id"
+          >{{ supervisor.name }}</option
+        >
+      </select>
     </div>
     <div class="form-group col-md-12 ">
       <label for="service-supervisor">Turno</label>
       <div class="row">
-        <div class="col-md-4" *ngFor="let schedule of schedules">
-          <mat-checkbox [(ngModel)]="schedule.value"
-            >{{ schedule.name }}
-          </mat-checkbox>
+        <div class="col-md-12" *ngFor="let schedule of schedules">
+          <div class="row list">
+            <mat-checkbox
+              name="schedule.name"
+              [(ngModel)]="schedule.checked"
+              class="col-sm-4"
+              >{{ schedule.name }}
+            </mat-checkbox>
+
+            <div class="col-md-3 ">
+              <input
+                name="schedule{{ schedule.name }}"
+                type="number"
+                class="form-control turn-input "
+                [(ngModel)]="schedule.max"
+                [disabled]="!schedule.checked"
+                min="0"
+                placeholder="0"
+              />
+              <span
+                matTooltip="Maximo número de empleados por turno"
+                [matTooltipPosition]="'above'"
+              >
+                <i class="fa fa-question-circle info"></i>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="form-group col-md-12 ">
-      <label for="service-supervisor">Salarios</label>
     </div>
 
     <div class="form-group col-md-12 text-right ">

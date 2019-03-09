@@ -3,12 +3,18 @@
     Title 1
   </h1>
 
-  <app-modal [title]="'Add new value'">
-    <app-supervisor-form></app-supervisor-form>
+  <app-modal #supervisorModal [title]="'Add new value'">
+    <app-supervisor-form
+      (supervisorSaved)="onSupervisorSaved($event)"
+    ></app-supervisor-form>
   </app-modal>
 
   <div class="row">
-    <table mat-table [dataSource]="supervisors" class="mat-elevation-z8 col-lg-6">
+    <table
+      mat-table
+      [dataSource]="supervisors"
+      class="mat-elevation-z8 col-lg-6"
+    >
       <!--- Note that these columns can be defined in any order.
                     The actual rendered columns are set as a property on the row definition" -->
 
@@ -33,6 +39,13 @@
             (click)="editSupervisor(element)"
           >
             Edit
+          </button>
+          <button
+            md-raised-button
+            class="btn btn-danger"
+            (click)="deleteSupervisor(element._id)"
+          >
+            Delete
           </button>
         </td>
       </ng-container>

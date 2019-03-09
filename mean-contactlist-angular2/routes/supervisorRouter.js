@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 
 function routes(Supervisor) {
   /*  "/api/supervisors"
@@ -8,7 +8,7 @@ function routes(Supervisor) {
   const supervisorRouter = express.Router();
 
   supervisorRouter
-    .route("/supervisors")
+    .route('/supervisors')
     .get((req, res) => {
       Supervisor.find((err, supervisors) => {
         if (err) {
@@ -23,6 +23,30 @@ function routes(Supervisor) {
       supervisor.save();
       return res.status(201).json(supervisor);
     });
+
+  supervisorRouter.use('/supervisors/:supervisorId', (req, res, next) => {
+    Supervisor.findById(req.params.supervisorId, (err, supervisor) => {
+      if (err) {
+        return handleError(res, err, 'Failed to get supervisor Information');
+      }
+      if (supervisor) {
+        req.supervisor = supervisor;
+        return next();
+      }
+
+      return res.sendStatus(404);
+    });
+  });
+
+  supervisorRouter.route('/supervisors/:supervisorId').delete((req, res) => {
+    req.supervisor.remove(err => {
+      if (err) {
+        return handleError(res, err, 'Failed to remove supervisor');
+      }
+
+      return res.sendStatus(204);
+    });
+  });
 
   return supervisorRouter;
 }
