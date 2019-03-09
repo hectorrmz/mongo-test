@@ -19,4 +19,8 @@ export class ServiceService {
       .post('api/services', service)
       .pipe(map((response: Response) => response.json()));
   }
+
+  deleteService(id: string): Observable<any> {
+    return this.http.delete('api/services/' + id);
+  }
 }
