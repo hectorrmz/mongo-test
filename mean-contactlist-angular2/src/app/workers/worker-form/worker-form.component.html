@@ -1,3 +1,184 @@
-<p>
-  worker-form works!
-</p>
+<form>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Información del Trabajador
+        </mat-panel-title>
+        <mat-panel-description> </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="row form-group-container">
+        <div class="form-group col-md-6 ">
+          <label for="worker-first-name">Nombre(s)</label>
+          <input
+            class="form-control"
+            name="worker-first-name"
+            [(ngModel)]="worker.firstName"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="worker-last-name">Apellidos</label>
+          <input
+            class="form-control"
+            name="worker-last-name"
+            [(ngModel)]="worker.lastName"
+          />
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="worker-accounNumber">Numero de Cuenta</label>
+          <input
+            class="form-control"
+            name="worker-accounNumber"
+            [(ngModel)]="worker.accounNumber"
+          />
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="worker-admissionDate">Fecha de Ingreso</label>
+          <div class="date-picker">
+            <input
+              class="form-control"
+              name="worker-admissionDate"
+              [(ngModel)]="worker.admissionDate"
+              [matDatepicker]="admisionpicker"
+              placeholder="Seleccionar Fecha..."
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="admisionpicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #admisionpicker></mat-datepicker>
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="worker-ssn">Numero de Seguro Social</label>
+          <input
+            class="form-control"
+            name="worker-ssn"
+            [(ngModel)]="worker.ssn"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="worker-infonavit">Infonavit</label>
+          <input
+            class="form-control"
+            name="worker-infonavit"
+            [(ngModel)]="worker.infonavit"
+          />
+        </div>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Información del Servicio
+        </mat-panel-title>
+        <mat-panel-description> </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="row form-group-container">
+        <div class="form-group col-md-12 ">
+          <label for="supervisor-name">Servicio</label>
+          <input
+            type="text"
+            placeholder="Seleccionar un Servicio..."
+            name="worker-service"
+            [(ngModel)]="wService"
+            (ngModelChange)="filterServices()"
+            class="form-control"
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filtered" [value]="option.name">
+              {{ option.name }}
+            </mat-option>
+          </mat-autocomplete>
+        </div>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Direccion del Trabajador
+        </mat-panel-title>
+        <mat-panel-description> </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="row form-group-container">
+        <div class="form-group col-md-12 ">
+          <label for="worker-address">Dirección</label>
+          <input
+            class="form-control"
+            name="worker-address"
+            [(ngModel)]="worker.address.address"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="worker-region">Colonia</label>
+          <input
+            class="form-control"
+            name="worker-region"
+            [(ngModel)]="worker.address.region"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="worker-city">Ciudad</label>
+          <input
+            class="form-control"
+            name="worker-city"
+            [(ngModel)]="worker.address.city"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="worker-zipcode">Código Postal</label>
+          <input
+            class="form-control"
+            name="worker-zipcode"
+            [(ngModel)]="worker.address.zipcode"
+          />
+        </div>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Información Adicional
+        </mat-panel-title>
+        <mat-panel-description> </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="row form-group-container">
+        <div class="form-group col-md-6">
+          <label for="worker-phone">Teléfono</label>
+          <input
+            class="form-control"
+            name="worker-phone"
+            [(ngModel)]="worker.phone"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="worker-dob">Fecha de Nacimiento</label>
+          <div class="date-picker">
+            <input
+              class="form-control"
+              name="worker-dob"
+              [(ngModel)]="worker.dob"
+              [matDatepicker]="dobpicker"
+              placeholder="seleccionar Fecha..."
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="dobpicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #dobpicker></mat-datepicker>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <div class="form-group col-md-12 text-right ">
+    <button class="btn btn-primary" (click)="createWorker()">
+      Create
+    </button>
+  </div>
+</form>

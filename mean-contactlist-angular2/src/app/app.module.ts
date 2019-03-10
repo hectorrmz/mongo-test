@@ -1,11 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+
+//Angular Material Components
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,9 +25,10 @@ import { SupervisorService } from './services/supervisors.service';
 import { ServiceComponent } from './service/service.component';
 import { ServiceFormComponent } from './service/service-form/service-form.component';
 import { ServiceService } from './services/services.service';
-import { WorkerComponent } from './worker/worker.component';
 import { WorkersComponent } from './workers/workers.component';
 import { WorkerFormComponent } from './workers/worker-form/worker-form.component';
+import { WorkerService } from './services/workers.service';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -35,7 +41,6 @@ import { WorkerFormComponent } from './workers/worker-form/worker-form.component
     SupervisorFormComponent,
     ServiceComponent,
     ServiceFormComponent,
-    WorkerComponent,
     WorkersComponent,
     WorkerFormComponent
   ],
@@ -44,12 +49,22 @@ import { WorkerFormComponent } from './workers/worker-form/worker-form.component
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     MatTableModule,
     MatCheckboxModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatAutocompleteModule,
+    MatExpansionModule
   ],
-  providers: [SupervisorService, ServiceService],
+  providers: [
+    MatDatepickerModule,
+    SupervisorService,
+    ServiceService,
+    WorkerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
