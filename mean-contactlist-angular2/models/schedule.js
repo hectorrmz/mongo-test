@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const scheduleSchema = new Schema({
-  type: { type: String },
+  name: { type: String },
   maxWorkers: { type: Number }
 });
 

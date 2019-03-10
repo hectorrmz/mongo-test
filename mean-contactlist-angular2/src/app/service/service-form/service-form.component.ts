@@ -26,19 +26,31 @@ export class ServiceFormComponent implements OnInit {
 
   ngOnInit() {
     this.loadSupervisors();
+    this.service = {
+      positions: [{ name: '', salary: null }]
+    };
   }
 
   createService() {
+    this.service.schedules = [];
+
     this.schedules.forEach(item => {
-      this.service.schedule = [];
       if (item.checked) {
-        this.service.schedule.push({ type: item.name, maxWorkers: item.max });
+        this.service.schedules.push({ name: item.name, maxWorkers: item.max });
       }
     });
 
     this.serviceService.createService(this.service).subscribe(service => {
       this.serviceSaved.emit(service);
     });
+  }
+
+  addNewPosition() {
+    this.service.positions.push({ name: '', salary: null });
+  }
+
+  deletePosition(index: number) {
+    this.service.positions.splice(index, 1);
   }
 
   private loadSupervisors() {

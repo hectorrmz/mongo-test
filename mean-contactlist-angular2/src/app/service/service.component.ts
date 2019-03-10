@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Service } from '../models/service';
+import { Service, Schedule } from '../models/service';
 import { ServiceService } from '../services/services.service';
 import { ModalComponent } from '../modal/modal.component';
 import swal from 'sweetalert';
@@ -48,6 +48,23 @@ export class ServiceComponent implements OnInit {
   private loadServices() {
     this.serviceService.getservices().subscribe(services => {
       this.services = services;
+      this.services.forEach(service => {
+        if (service.schedules && service.schedules.length) {
+          service.scheduleType = service.schedules
+            .map(item => {
+              return item.name && item.name.charAt(0).toUpperCase();
+            })
+            .join(', ');
+
+          service.capacity = Object.keys(service.schedules).reduce(function(
+            previous,
+            key
+          ) {
+            return previous + service.schedules[key].maxWorkers;
+          },
+          0);
+        }
+      });
     });
   }
 }

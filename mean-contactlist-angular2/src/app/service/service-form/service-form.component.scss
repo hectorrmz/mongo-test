@@ -13,3 +13,26 @@
     font-size: 15px;
   }
 }
+
+.position-element {
+  margin-bottom: 10px;
+  span.delete-btn {
+    color: #3e5467;
+    margin: 15px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .salary-input {
+    width: 70%;
+    display: inline-block;
+  }
+}
+
+.link {
+  color: #1ebc9e;
+  cursor: pointer;
+  margin: 10px 0;
+  display: inline-block;
+  font-size: 12px;
+}

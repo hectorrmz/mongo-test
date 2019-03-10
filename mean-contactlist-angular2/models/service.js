@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 const ScheduleSchema = require('./schedule').schema;
+const PositionSchema = require('./position').schema;
 
 const { Schema } = mongoose;
 
 const serviceSchema = new Schema({
   supervisor: { type: Schema.Types.ObjectId, ref: 'Supervisor' },
-  schedule: [ScheduleSchema],
-  position: [{ type: Schema.Types.ObjectId, ref: 'Position' }],
+  schedules: [ScheduleSchema],
+  positions: [PositionSchema],
   name: { type: String },
   maxWorkers: { type: Number }
 });
