@@ -1,4 +1,5 @@
 const express = require('express');
+const Supervisor = require('../models/supervisor');
 
 function routes(Service) {
   /*  "/api/services"
@@ -20,9 +21,16 @@ function routes(Service) {
           return res.send(services);
         });
     })
-    .post((req, res) => {
+    .post(async (req, res) => {
       const service = new Service(req.body);
-      service.save();
+      await service.save();
+
+      await Supervisor.findByIdAndUpdate(
+        service.supervisor._id,
+        { $push: { services: service._id } },
+        { new: true }
+      ).exec();
+
       return res.status(201).json(service);
     });
 

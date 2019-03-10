@@ -17,6 +17,7 @@ export class SupervisorFormComponent implements OnInit {
 
   createSupervisor() {
     this.supervisorService.createSupervisor(this.supervisor).subscribe(res => {
+      this.supervisor = {};
       this.supervisorSaved.emit(res);
     });
   }

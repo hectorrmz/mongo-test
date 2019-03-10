@@ -20,6 +20,9 @@ import { SupervisorService } from './services/supervisors.service';
 import { ServiceComponent } from './service/service.component';
 import { ServiceFormComponent } from './service/service-form/service-form.component';
 import { ServiceService } from './services/services.service';
+import { WorkerComponent } from './worker/worker.component';
+import { WorkersComponent } from './workers/workers.component';
+import { WorkerFormComponent } from './workers/worker-form/worker-form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { ServiceService } from './services/services.service';
     ModalComponent,
     SupervisorFormComponent,
     ServiceComponent,
-    ServiceFormComponent
+    ServiceFormComponent,
+    WorkerComponent,
+    WorkersComponent,
+    WorkerFormComponent
   ],
   imports: [
     BrowserAnimationsModule,

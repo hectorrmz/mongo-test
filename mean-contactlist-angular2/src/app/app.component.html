@@ -42,6 +42,12 @@
             <span class="nav-label">Services</span>
           </a>
         </li>
+        <li>
+          <a routerLinkActive="active" routerLink="/trabajadores"
+            ><i class="fa fa-user"></i>
+            <span class="nav-label">Workers</span>
+          </a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -59,7 +65,12 @@
             (click)="miniMenu = !miniMenu"
             ><i class="fa fa-bars"></i>
           </span>
-          <form role="search" class="navbar-form-custom" method="post" action="#">
+          <form
+            role="search"
+            class="navbar-form-custom"
+            method="post"
+            action="#"
+          >
             <div class="form-group">
               <input
                 type="text"

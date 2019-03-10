@@ -4,16 +4,18 @@ import { SupervisorsComponent } from './supervisors/supervisors.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContactListComponent } from './contacts/contact-list/contact-list.component';
 import { ServiceComponent } from './service/service.component';
+import { WorkersComponent } from './workers/workers.component';
 
 const routes: Routes = [
   { path: 'supervisores', component: SupervisorsComponent },
   { path: 'contactos', component: ContactListComponent },
   { path: 'servicios', component: ServiceComponent },
-  { path: '', component: DashboardComponent },
+  { path: 'trabajadores', component: WorkersComponent },
+  { path: '', component: DashboardComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

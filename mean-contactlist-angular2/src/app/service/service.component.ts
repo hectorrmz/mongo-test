@@ -42,6 +42,7 @@ export class ServiceComponent implements OnInit {
   }
 
   onServiceSaved(_service: Service) {
+    this.serviceModal.closeModal();
     this.loadServices();
   }
 

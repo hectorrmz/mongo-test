@@ -13,11 +13,7 @@ export class ServiceFormComponent implements OnInit {
   @Output() serviceSaved: EventEmitter<Service> = new EventEmitter();
   service: Service = {};
   supervisors: Supervisor[];
-  schedules = [
-    { name: 'Matutino', checked: false, max: null },
-    { name: 'Vespertino', checked: false, max: null },
-    { name: 'Nocturno', checked: false, max: null }
-  ];
+  schedules;
 
   constructor(
     private serviceService: ServiceService,
@@ -26,9 +22,7 @@ export class ServiceFormComponent implements OnInit {
 
   ngOnInit() {
     this.loadSupervisors();
-    this.service = {
-      positions: [{ name: '', salary: null }]
-    };
+    this.setInitialValues();
   }
 
   createService() {
@@ -41,6 +35,7 @@ export class ServiceFormComponent implements OnInit {
     });
 
     this.serviceService.createService(this.service).subscribe(service => {
+      this.setInitialValues();
       this.serviceSaved.emit(service);
     });
   }
@@ -57,5 +52,17 @@ export class ServiceFormComponent implements OnInit {
     this.supervisorService.getSupervisors().subscribe(supervisors => {
       this.supervisors = supervisors;
     });
+  }
+
+  private setInitialValues() {
+    this.service = {
+      positions: [{ name: '', salary: null }]
+    };
+
+    this.schedules = [
+      { name: 'Matutino', checked: false, max: null },
+      { name: 'Vespertino', checked: false, max: null },
+      { name: 'Nocturno', checked: false, max: null }
+    ];
   }
 }

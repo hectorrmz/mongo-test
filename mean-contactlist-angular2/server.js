@@ -10,11 +10,13 @@ app.use(bodyParser.json());
 const Supervisor = require('./models/supervisor');
 const Contact = require('./models/contact');
 const Service = require('./models/service');
+const Worker = require('./models/worker');
 
 // Application API Routes
 const supervisorRouter = require('./routes/supervisorRouter')(Supervisor);
 const contactRouter = require('./routes/contactRouter')(Contact);
 const serviceRouter = require('./routes/serviceRouter')(Service);
+const workerRouter = require('./routes/workerRouter')(Worker);
 
 // Create link to Angular build directory
 var distDir = __dirname + '/dist/';
@@ -49,6 +51,7 @@ function handleError(res, reason, message, code) {
 app.use('/api', supervisorRouter);
 app.use('/api', contactRouter);
 app.use('/api', serviceRouter);
+app.use('/api', workerRouter);
 
 app.get('*', function(req, res) {
   res.sendfile('./dist/index.html');

@@ -10,13 +10,15 @@ function routes(Supervisor) {
   supervisorRouter
     .route('/supervisors')
     .get((req, res) => {
-      Supervisor.find((err, supervisors) => {
-        if (err) {
-          return res.send(err);
-        }
+      Supervisor.find()
+        .populate('services')
+        .exec((err, supervisors) => {
+          if (err) {
+            return res.send(err);
+          }
 
-        return res.send(supervisors);
-      });
+          return res.send(supervisors);
+        });
     })
     .post((req, res) => {
       const supervisor = new Supervisor(req.body);

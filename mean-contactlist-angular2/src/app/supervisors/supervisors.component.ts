@@ -11,7 +11,7 @@ import swal from 'sweetalert';
 })
 export class SupervisorsComponent implements OnInit {
   @ViewChild('supervisorModal') supervisorModal: ModalComponent;
-  displayedColumns: string[] = ['name', 'phone', 'actions'];
+  displayedColumns: string[] = ['name', 'phone', 'services', 'actions'];
   supervisors: Supervisor[] = [];
 
   constructor(private supervisorService: SupervisorService) {}
@@ -46,7 +46,6 @@ export class SupervisorsComponent implements OnInit {
 
   private loadSupervisors() {
     this.supervisorService.getSupervisors().subscribe(res => {
-      console.log(res);
       this.supervisors = res;
     });
   }
