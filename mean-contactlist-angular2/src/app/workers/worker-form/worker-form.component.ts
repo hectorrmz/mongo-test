@@ -38,17 +38,18 @@ export class WorkerFormComponent implements OnInit {
     });
   }
 
-  private setFilters() {
-    this.filteredOptions = this.servicesControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
-  }
-
   filterServices() {
     if (this.wService) {
       this.filtered = this._filter(this.wService);
     }
+  }
+
+  displayFn(service?: Service): string | undefined {
+    return service ? service.name : undefined;
+  }
+
+  onSelectionChanged(service: Service) {
+    console.log(service);
   }
 
   private _filter(value: string): Service[] {

@@ -3,7 +3,7 @@
     Title 12
   </h1>
 
-  <app-modal #workerModal [title]="'Add new Worker'">
+  <app-modal #workerModal [title]="'Add new Worker'" [expanded]="true">
     <app-worker-form (workedSaved)="onWorkerSaved($event)"></app-worker-form>
   </app-modal>
 

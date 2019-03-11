@@ -1,6 +1,6 @@
 <form>
-  <mat-accordion>
-    <mat-expansion-panel>
+  <mat-accordion multi="true">
+    <mat-expansion-panel [expanded]="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
           Información del Trabajador
@@ -78,7 +78,6 @@
       </mat-expansion-panel-header>
       <div class="row form-group-container">
         <div class="form-group col-md-12 ">
-          <label for="supervisor-name">Servicio</label>
           <input
             type="text"
             placeholder="Seleccionar un Servicio..."
@@ -87,9 +86,14 @@
             (ngModelChange)="filterServices()"
             class="form-control"
             [matAutocomplete]="auto"
+            [matAutocompleteConnectedTo]="worker.service"
           />
-          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="let option of filtered" [value]="option.name">
+          <mat-autocomplete
+            autoActiveFirstOption
+            #auto="matAutocomplete"
+            [displayWith]="displayFn"
+          >
+            <mat-option *ngFor="let option of filtered" [value]="option">
               {{ option.name }}
             </mat-option>
           </mat-autocomplete>
@@ -175,8 +179,8 @@
       </div>
     </mat-expansion-panel>
   </mat-accordion>
-
-  <div class="form-group col-md-12 text-right ">
+  {{ worker | json }}
+  <div class="form-group col-md-12 text-right buttons-container">
     <button class="btn btn-primary" (click)="createWorker()">
       Create
     </button>
