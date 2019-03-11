@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const AddressSchema = require('./address');
+const AddressSchema = require('./address').schema;
 
 const { Schema } = mongoose;
 
